@@ -1,4 +1,6 @@
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class BasePage:
     def __init__(self, browser):
@@ -22,5 +24,7 @@ class BasePage:
         element.send_keys(text)
         
     def click_button(self, locator):
-        element = self.browser.find_element(*locator)
+        element = WebDriverWait(self.browser, 10).until(
+        EC.element_to_be_clickable(locator)
+    )
         element.click()
