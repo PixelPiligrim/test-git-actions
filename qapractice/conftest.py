@@ -7,6 +7,7 @@ import pytest
 def browser():
     chrome_options = Options()
     chrome_options.add_argument('--headless=new')
+    chrome_options.add_argument('--window-size=1920,1080')
     chrome_browser = webdriver.Chrome(options=chrome_options)
     chrome_browser.implicitly_wait(4)
     return chrome_browser
